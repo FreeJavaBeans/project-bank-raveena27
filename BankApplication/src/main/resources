@@ -1,0 +1,29 @@
+rootLogger.level = All
+property.filename = trace.log
+appenders = R,console
+loggers=BankApplication
+
+appender.console.type = Console
+appender.console.name = STDOUT
+appender.console.layout.type = PatternLayout
+appender.rolling.layout.pattern = %d %p %C{1.} [%t] %m%n
+
+appender.R.type = RollingFile
+appender.R.name = File
+appender.R.fileName = ${filename}
+appender.R.filePattern = target/rolling2/test1-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz
+appender.R.layout.type = PatternLayout
+appender.R.layout.pattern = %d %p %C{1.} [%t] %m%n
+appender.R.policies.type = Policies
+appender.R.policies.time.type = TimeBasedTriggeringPolicy
+appender.R.policies.time.interval = 1
+
+rootLogger.appenderRefs = R,console
+
+logger.BankApplication.name = com.revature.BankApplication
+logger.BankApplication.level=debug
+logger.BankApplication.additivity = true
+logger.BankApplication.apppenderRefs=R
+logger.BankApplication.appenderRef.R.ref = File
+
+rootLogger.appenderRef.stdout.ref = STDOUT
