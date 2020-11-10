@@ -14,35 +14,30 @@ import com.revature.log.Logging;
 public class BankLogin{
 	
 	public DBLogin cu = DBLogin.getDBLogin();
-	//String customerName;
-	//String password ;
-     public boolean BankLogin() 
+	
+     public boolean BankLogin(Customer cust) 
 	 {
     	 Scanner s = new Scanner(System.in);
     	 
-    	 //int AccountID;
-    	 
     	 Connection conn = cu.getConnection();
-    	 //System.out.println(conn);
-    	 
-      	
+    	
 	System.out.println("welcome please enter your login details ..");
 	System.out.println("--------------------");
 	
 	
-	System.out.println("enter customer Username :");
-	
-	String user_name = s.nextLine();
-	
+	if(cust.getFirstname() == null) {
+		System.out.println("enter user_name :"); 
+		String firstname = s.nextLine();
+		cust.setFirstname(firstname);
+		 }
 	System.out.println("--------------------");
-
-	System.out.println("welcome "+ user_name);
 	
-	System.out.println("please enter customer password :");
-	String pswd = s.nextLine();
-     
-    // System.out.println("please enter Account ID :");
-     //AccountID = s.nextInt();
+	if(cust.getPswd() == null) {
+		System.out.println("enter password :"); 
+		String Pswd = s.nextLine();
+		cust.setPswd(Pswd);
+		 }
+
      
 	System.out.println("--------------------");
 	
@@ -51,13 +46,13 @@ public class BankLogin{
 	try {
 		Statement stmtobj = conn.createStatement(); //gets all names in table BankLogin
 		
-   	 String querystring = "select * from banking.\"BankLogin\" where user_name = '"+user_name+"' and pswd = '"+pswd+"'";
+   	 String querystring = "select * from banking.\"BankLogin\" where user_name = '"+cust.getFirstname()+"' and pswd = '"+cust.getPswd()+"'";
    	 ResultSet results = stmtobj.executeQuery(querystring);
    	 
    	 if(results.next()==true)
    	 {
-   		 System.out.println("login successful.. "+user_name);
-   		Logging.loggerInfo(user_name+" logged in succesfully");//for log info
+   		 System.out.println("login successful.. "+cust.getFirstname());
+   		Logging.loggerInfo(cust.getFirstname()+" logged in succesfully");//for log info
    		 		 
    		 return true;
    	 }else {
