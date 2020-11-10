@@ -76,7 +76,7 @@ public class CustNewAccount {
 			rs = results.getInt("accountID");
 			System.out.println("displaying results..");
 			System.out.println("AccountID : "+rs);
-			 System.out.println(First_Name+"customer accountid is : "+rs);
+			 System.out.println(First_Name+" customer accountid is : "+rs);
 		}
 		
 		
@@ -88,7 +88,7 @@ public class CustNewAccount {
       
    	 int  rowcount1= stmtobj2.executeUpdate(queryst1);
           if(rowcount1>0) {
-    	 System.out.println("Success and "+rowcount1+" records are updated");
+    	 System.out.println("Success and "+ rowcount1+" records are updated");
     	 System.out.println("new row inserted in customer details ");
              }
     		}catch(SQLException e) {
