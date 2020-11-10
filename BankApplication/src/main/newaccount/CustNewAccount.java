@@ -60,7 +60,7 @@ public class CustNewAccount {
 	try {
 		Connection conn = cu.getConnection();
 		Statement stmtobj = conn.createStatement(); 
-		String queryst = "insert into banking.\"Cust_Account\" (user_name,balance,deposit,withdraw,previoustransaction) values ('"+First_Name+"'"+",'0',"+"'"+deposit+"'"+",'0','0')";
+		String queryst = "insert into banking.\"Cust_Account\" (user_name,balance,deposit,withdraw,previoustransaction) values ('"+First_Name+"'"+",'"+deposit"',"+"'"+deposit+"'"+",'0','0')";
 		int rwcount = stmtobj.executeUpdate(queryst);
 		if(rwcount>0) {
 	    	 System.out.println("Success and "+rwcount+" records are inserted and "+deposit+" Deposited ");
