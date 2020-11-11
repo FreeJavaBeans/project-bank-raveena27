@@ -25,28 +25,58 @@ public class BankApp {
 			
 			System.out.println("WELCOME TO BANK");
 			
-                       Customer cust = new Customer();
-			BankLogin obj1 = new BankLogin();
-
-			boolean loginSu = obj1.BankLogin(cust);
-
-			if (loginSu == true) {
-
-				System.out.println("welcome.. ");
-
-				BankAccount obj2 = new BankAccount();
-				obj2.menu(cust);
-
-			} else {
-
-				System.out.println("no such account available.");
-				System.out.println("please create a new Account ");
-				CustNewAccount obj3 = new CustNewAccount();
-				obj3.CustNewAccount();
-
-			}
+                       	String input;
+			    
+				System.out.println("please enter an option for ");
+				System.out.println("   1. login as existing Customer ");
+				System.out.println("   2. Create new account  ");
+				
+				Scanner s = new Scanner(System.in);
+				System.out.println("enter option : ");
+				 input = s.nextLine();
+				
+				
+			    	switch (Integer.parseInt(input)) {
+			    	
+					case 1: login(); 
+						break;
+							
+					case 2: System.out.println("please create a new Account ");
+							CustNewAccount obj3 = new CustNewAccount();
+							obj3.CustNewAccount();
+							break;
+					 
+					default:
+						System.out.println("Exiting the Menu .. ");
+						System.exit(0);
+						}
+						
+			    	}
 
 		}
+		
+		
 	}
+	static void login() throws SQLException {
+
+							Customer cust = new Customer();
+							BankLogin obj1 = new BankLogin();
+		
+							boolean loginSu = obj1.BankLogin(cust);
+		
+							if (loginSu == true) {
+
+								System.out.println("welcome.. ");
+
+								BankAccount obj2 = new BankAccount();
+								obj2.menu(cust);
+
+							} else {
+
+								//System.out.println("no such account available.");
+								System.out.println("invalid details ");
+								
+							}
+						}
 
 }
