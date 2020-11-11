@@ -37,7 +37,7 @@ public class BankApp {
 				System.out.println("welcome.. ");
 
 				BankAccount obj2 = new BankAccount();
-				obj2.menu();
+				obj2.menu(cust);
 
 			} else {
 
