@@ -18,11 +18,6 @@ public class BankApp {
 
 		DBLogin cu = DBLogin.getDBLogin();
 
-		// Logger logger = LogManager.getLogger("com.revature.BankApplication");
-		// logger.debug("this is a test");
-		//Logging.loggerInfo("transaction is started");
-		// Thread.currentThread().getStackTrace();
-
 		Connection conn = cu.getConnection();
 
 		if (conn != null && !conn.isClosed()) {
