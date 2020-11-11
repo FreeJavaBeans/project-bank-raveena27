@@ -16,10 +16,14 @@ public class CustomerLogTransactions{
 		Connection conn = cu.getConnection();
 		
 		Scanner s = new Scanner(System.in);
+	     
+	     System.out.println("enter name of customer");
+		String user_name = s.nextLine();
+		
 	
 			try {
 			
-			PreparedStatement stmtobj = conn.prepareStatement("select * from banking.\"Cust_Account_Hist\""); //sql stmt to get all customer details select * from cust_account
+			PreparedStatement stmtobj = conn.prepareStatement("select * from banking.\"Cust_Account_Hist\"where user_name = '"+user_name+"'"); //sql stmt to get all customer details select * from cust_account
 			ResultSet results = stmtobj.executeQuery();	
 			 System.out.println("  ID    |    User_NAME        |   Balance  |   Deposit     | Withdraw     |   Previous Transaction   |    Date");
 
