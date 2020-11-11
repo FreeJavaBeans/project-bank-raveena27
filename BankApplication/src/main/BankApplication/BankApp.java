@@ -22,6 +22,9 @@ public class BankApp {
 
 		if (conn != null && !conn.isClosed()) {
 			System.out.println("DB connected !!");
+			
+			System.out.println("WELCOME TO BANK");
+			
                        Customer cust = new Customer();
 			BankLogin obj1 = new BankLogin();
 
