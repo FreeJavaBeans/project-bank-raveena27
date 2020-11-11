@@ -22,14 +22,16 @@ DBLogin cu = DBLogin.getDBLogin();
 	
 	
 	CustomerBalance exisBal = new CustomerBalance();
-	
+	      
+	long currentTimeMills = System.currentTimeMillis();
+	Date date = new Date(currentTimeMills);
 	
 
 	
 	int balance=0;
 	int prevBal = 0;
 	int accountID =0;
-	//int previoustransaction = 0;
+	
 	
 	if(cust.getFirstname() == null) {
 		System.out.println("enter user_name :"); 
@@ -51,6 +53,15 @@ DBLogin cu = DBLogin.getDBLogin();
 		
 		
 		try {
+			int rs = exisBal.getCustBalance(cust);
+			Statement stmtobj1 = conn.createStatement();
+			String querystm = "insert into banking.\"Cust_Account_Hist\" (accountID,user_name,balance,deposit,withdraw,previoustransaction,rec_update) values ('"+cust.getAccountID()+"','"+cust.getFirstname()+"','"+balance+"','"+rs+"' ,'"+amount+"', '"+prevBal+"','"+date+"') " ;
+			
+			int rc = stmtobj1.executeUpdate(querystm);
+			if(rc>0) {
+				System.out.println(+rc+ " rows updated in Cust_Account_Hist");
+			         }
+			
 			Statement stmtobj = conn.createStatement();
 		
 			String queryst = "update banking.\"Cust_Account\" set balance = '"+balance+"',deposit = '"+amount+"',previoustransaction= '"+prevBal+"' where accountID ='" +cust.getAccountID()+"' and user_name = '"+cust.getFirstname()+"'" ;
@@ -61,11 +72,7 @@ DBLogin cu = DBLogin.getDBLogin();
 			System.out.println("Deposited amount :"+amount);
 			System.out.println("total balance :"+balance);
 			}
-			/*while(results.next()== true) {
-				System.out.println("displaying results..");
-				System.out.println(results);
-				
-			}*/
+			
 			
 		}catch(SQLException e){
 			e.printStackTrace();
