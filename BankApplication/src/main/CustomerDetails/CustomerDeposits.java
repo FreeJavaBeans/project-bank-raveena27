@@ -81,35 +81,5 @@ DBLogin cu = DBLogin.getDBLogin();
 		
 	}	
 	}
-	/*
-	public   getCustDeposits() {
-		
-		Connection conn = cu.getConnection();
-		
-		Scanner s = new Scanner(System.in);
-		
-		System.out.println("enter customername :");
-		 String First_name = s.nextLine();
-		
-		
-		try {
-			Statement stmtobj1 = conn.createStatement(); //sql stmt to get all customer details select * from cust_details
-			String querystring ="select balance from banking.\"Cust_Account\" where user_name = '"+First_name+"'";
-			ResultSet results = stmtobj1.executeQuery(querystring);	
-			
-			while(results.next()== true) {
-				System.out.println("displaying results..");
-				System.out.println(results);
-				
-			}
-			
-		}catch(SQLException e){
-			e.printStackTrace();
-			System.out.println("failed to Display balance details ");
-		}
-		
-		return null;
 	
-	}
-*/
 
