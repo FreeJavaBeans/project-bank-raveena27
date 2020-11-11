@@ -18,13 +18,13 @@ public class BankAccount {
 	
 	Scanner s = new Scanner(System.in);
 	
-	public void menu() throws SQLException {
+	public void menu(Customer cust) throws SQLException {
 		
 		char option;
 			
 		Scanner s = new Scanner(System.in);
 		
-		Customer cust = new Customer();
+		
 		Connection conn = cu.getConnection();
 		
 		
