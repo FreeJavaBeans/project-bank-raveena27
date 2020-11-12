@@ -15,7 +15,7 @@ public class BankLogin{
 	
 	public DBLogin cu = DBLogin.getDBLogin();
 	
-     public boolean BankLogin(Customer cust) 
+     public boolean BankLoginn(Customer cust) 
 	 {
     	 Scanner s = new Scanner(System.in);
     	 
