@@ -62,7 +62,7 @@ public class BankApp {
 							Customer cust = new Customer();
 							BankLogin obj1 = new BankLogin();
 		
-							boolean loginSu = obj1.BankLogin(cust);
+							boolean loginSu = obj1.BankLoginn(cust);
 		
 							if (loginSu == true) {
 
